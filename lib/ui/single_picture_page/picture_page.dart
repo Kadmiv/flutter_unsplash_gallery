@@ -4,9 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_unsplash_gallery/repo/api/api_helper.dart';
 import 'package:flutter_unsplash_gallery/repo/api/models/image_model.dart';
 import 'package:flutter_unsplash_gallery/utils/constants.dart';
-import 'package:logger/logger.dart';
 
-var LOG = Logger();
 
 class PicturePage extends StatefulWidget {
   final String title;

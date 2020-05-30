@@ -1,5 +1,6 @@
 import 'package:flutter_unsplash_gallery/repo/api/parsers/image_model_parser.dart';
 
+import 'api_listener.dart';
 import 'models/image_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,8 +13,6 @@ class ApiHelper {
     _token = token;
   }
 
-  var _imageModelParser = ImageModelParser();
-
   ApiHelper(String baseUrl) {
     _baseUrl = baseUrl;
   }
@@ -23,15 +22,27 @@ class ApiHelper {
     _token = token;
   }
 
-  Future<List<ImageModel>> loadPictureList() async {
-    final http.Response response = await http.get(
-      "${_baseUrl}?client_id=${_token}",
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
+  loadPictureFromPage(int page, ApiListener listener) async {
+    var headers = <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
 
-    print(response);
-    return _imageModelParser.parseModels(response.body);
+    //https://api.unsplash.com/photos?page=3&client_id=cf49c08b444ff4cb9e4d126b7e9f7513ba1ee58de7906e4360afc1a33d1bf4c0
+    var requestUrl = "${_baseUrl}photos?client_id=${_token}&page=${page}";
+
+    await http.get(requestUrl, headers: headers).then((response) {
+      print(response);
+      var _status = response.statusCode;
+      var _body = response.body;
+      if (_status == 200)
+        listener.onReceiveImageList(response);
+      else
+        listener.onLoadingError();
+    }).catchError((error) {
+      var _status = 0;
+      var _body = error.toString();
+
+      listener.onConnectionError();
+    }).timeout(Duration(seconds: 30));
   }
 }

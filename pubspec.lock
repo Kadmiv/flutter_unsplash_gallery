@@ -228,13 +228,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_staggered_grid_view:
-    dependency: "direct main"
-    description:
-      name: flutter_staggered_grid_view
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -331,13 +324,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
-  logger:
-    dependency: "direct dev"
-    description:
-      name: logger
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.1"
   logging:
     dependency: transitive
     description:
@@ -511,13 +497,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  splashscreen:
-    dependency: "direct main"
-    description:
-      name: splashscreen
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.0"
   sqflite:
     dependency: transitive
     description:

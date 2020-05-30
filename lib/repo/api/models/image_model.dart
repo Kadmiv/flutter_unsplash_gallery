@@ -31,8 +31,8 @@ class ImageModel {
     answer.id = json['id'];
     answer.description = json['alt_description'];
 
-    var links = json['links'];
-    answer.url = links['download'];
+    var links = json['urls'];
+    answer.url = links['small'];
 
     var user = json['user'];
     answer.userName = user['name'];

@@ -33,22 +33,16 @@ dependencies:
   google_fonts: any
 
   http:
-  provider: ^3.0.0+1
+  provider:
 
-  splashscreen: 1.2.0
-
-  #  qr_flutter: ^3.2.0
-  flutter_staggered_grid_view:
-
-  connectivity: ^0.4.6+2
-  cached_network_image: ^2.0.0
-  get_it: 4.0.2
+  connectivity:
+  cached_network_image:
+  get_it:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  logger: ^0.9.1
   build_runner:
   intl_translation: ^0.17.1
 #  flutter_launcher_icons: ^0.7.4
