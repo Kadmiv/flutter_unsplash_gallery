@@ -31,14 +31,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   google_fonts: any
-
+  loadmore:
   http:
   provider:
 
   connectivity:
   cached_network_image:
   get_it:
-  loadmore:
 
 dev_dependencies:
   flutter_test:

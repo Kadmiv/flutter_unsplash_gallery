@@ -12,8 +12,7 @@ class MainPage extends StatefulWidget {
   _MainPage createState() => _MainPage();
 }
 
-class _MainPage extends State<MainPage>  {
-
+class _MainPage extends State<MainPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
@@ -23,15 +22,14 @@ class _MainPage extends State<MainPage>  {
 
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
+    return DefaultTabController(
+      length: 2,
+      child: SafeArea(
         child: Scaffold(
           key: _scaffoldKey,
-          appBar: AppBar(
-            title: Text('Unsplash Demo'),
-          ),
+//          appBar: AppBar(
+//            title: Text('Unsplash Demo'),
+//          ),
           body: TabBarView(
             children: [
               PictureListPage(),
@@ -51,5 +49,4 @@ class _MainPage extends State<MainPage>  {
       ),
     );
   }
-
 }
