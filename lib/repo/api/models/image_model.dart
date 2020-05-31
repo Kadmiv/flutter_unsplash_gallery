@@ -29,15 +29,22 @@ class ImageModel {
     var answer = ImageModel();
 
     answer.id = json['id'];
-    answer.description = json['alt_description'];
 
     var links = json['urls'];
     answer.url = links['small'];
 
     var user = json['user'];
-    answer.userName = user['name'];
+
+    if (user['name'] != null) {
+      answer.userName = user['name'];
+    }
+
+    if (json['alt_description'] != null) {
+      answer.description = json['alt_description'];
+    }
+
+//    print(json);
 
     return answer;
   }
-
 }

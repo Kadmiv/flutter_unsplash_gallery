@@ -38,6 +38,7 @@ dependencies:
   connectivity:
   cached_network_image:
   get_it:
+  loadmore:
 
 dev_dependencies:
   flutter_test:

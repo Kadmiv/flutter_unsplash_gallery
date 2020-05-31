@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_unsplash_gallery/ui/picture_list_screen/picture_list_page.dart';
+import 'package:flutter_unsplash_gallery/ui/main_page/main_page.dart';
 import 'package:flutter_unsplash_gallery/ui/single_picture_page/picture_page.dart';
 import 'package:flutter_unsplash_gallery/utils/di/factory.dart';
 
@@ -45,6 +45,6 @@ final String addressPicturePage = "/picture";
 
 
 final appRoutes = {
-  addressMainPage: (context) => PictureListPage(),
+  addressMainPage: (context) => MainPage(),
   addressPicturePage: (context) => PicturePage(),
 };
