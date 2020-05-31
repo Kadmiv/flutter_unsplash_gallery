@@ -15,11 +15,15 @@ class PictureListPresenter extends BasePresenter<PictureListView>
 
   int _page = 0;
 
+  //For try again functionality
+  Function _lastFunction;
+
   onItemClicked(ImageModel item) {
     mView.openImagePage(item);
   }
 
   void loadPictureList() async {
+    _lastFunction = loadPictureList;
     mView.showLoadingView();
     _apiHelper.loadPictureFromPage(_page, this);
   }
@@ -35,19 +39,26 @@ class PictureListPresenter extends BasePresenter<PictureListView>
   }
 
   @override
-  onReceiveImageList(Response response) {
+  onReceiveDataList(Response response) {
     if (_page == 0) {
-      mView.initListView(_imageModelParser.parseModels(response.body));
+      mView.initListView(_imageModelParser.parseModelsFromList(response.body));
       return;
     }
 
-    mView.updateListView(_imageModelParser.parseModels(response.body));
+    mView.updateListView(_imageModelParser.parseModelsFromList(response.body));
   }
 
   @override
   void loadMore() {
-    // TODO: implement loadMore
     print("loadMore");
+    _lastFunction = loadMore;
     _apiHelper.loadPictureFromPage(_page++, this);
+  }
+
+  @override
+  void onReceiveSearchDataList(Response value) {}
+
+  void tryAgain() {
+    _lastFunction();
   }
 }

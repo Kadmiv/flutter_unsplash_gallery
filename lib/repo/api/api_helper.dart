@@ -35,7 +35,32 @@ class ApiHelper {
       var _status = response.statusCode;
       var _body = response.body;
       if (_status == 200)
-        listener.onReceiveImageList(response);
+        listener.onReceiveDataList(response);
+      else
+        listener.onLoadingError();
+    }).catchError((error) {
+      var _status = 0;
+      var _body = error.toString();
+
+      listener.onConnectionError();
+    }).timeout(Duration(seconds: 30));
+  }
+
+  searchPageByQuery(String query, int page, ApiListener listener) async {
+    var headers = <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    //    https://api.unsplash.com/search/photos?page=1&query=office
+    var requestUrl =
+        "${_baseUrl}search/photos?client_id=${_token}&page=${page}&query=${query}";
+
+    await http.get(requestUrl, headers: headers).then((response) {
+      print(response);
+      var _status = response.statusCode;
+      var _body = response.body;
+      if (_status == 200)
+        listener.onReceiveSearchDataList(response);
       else
         listener.onLoadingError();
     }).catchError((error) {

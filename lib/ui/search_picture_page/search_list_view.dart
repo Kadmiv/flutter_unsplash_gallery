@@ -12,4 +12,8 @@ class SearchListView {
   void showLoadingView() {}
 
   void showConnectionError() {}
+
+  void setAllItemsCount(itemsCount) {}
+
+  void showEmptyDataView(bool visibility) {}
 }

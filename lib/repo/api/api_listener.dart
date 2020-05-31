@@ -1,7 +1,9 @@
 import 'package:http/src/response.dart';
 
 class ApiListener {
-  onReceiveImageList(Response value) {}
+  void onReceiveDataList(Response value) {}
+
+  void onReceiveSearchDataList(Response value) {}
 
   void onLoadingError() {}
 
